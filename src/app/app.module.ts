@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { AlertComponent } from './_directives/index';
+
+import { AlertService} from './_services/index';
+
 import { AppComponent } from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home.component';
@@ -10,6 +14,7 @@ import {HomeComponent} from './home.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
     LoginComponent,
     HomeComponent
   ],
@@ -32,7 +37,9 @@ import {HomeComponent} from './home.component';
       }
     ])
   ],
-  providers: [],
+  providers: [
+    AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
