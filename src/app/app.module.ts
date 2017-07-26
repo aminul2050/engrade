@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import {LoginComponent} from './login.component';
@@ -14,6 +15,7 @@ import {HomeComponent} from './home.component';
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([
       {
         path: '',
