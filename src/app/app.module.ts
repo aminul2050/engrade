@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import {LoginComponent} from './login.component';
+import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home.component';
 
 @NgModule({
