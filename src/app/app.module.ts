@@ -2,14 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {JsonpModule, Jsonp, Response} from '@angular/http';
 
 import { AlertComponent } from './_directives/index';
 
-import { AlertService} from './_services/index';
+import { AlertService, ApiService } from './_services/index';
 
 import { AppComponent } from './app.component';
-import {LoginComponent} from './login/login.component';
-import {HomeComponent} from './home.component';
+import {LoginComponent} from './_login/login.component';
+import {HomeComponent} from './_home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,25 +23,29 @@ import {HomeComponent} from './home.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
+    HttpClientModule,
+    JsonpModule,
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/_login',
         pathMatch: 'full'
       },
       {
-        path: 'login',
+        path: '_login',
         component: LoginComponent
       },
       {
-        path: 'home',
+        path: '_home',
         component: HomeComponent
       }
     ])
   ],
   providers: [
-    AlertService
+    AlertService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
