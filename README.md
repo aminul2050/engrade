@@ -6,6 +6,8 @@ Run `npm update` to update node modules or install npm first if not installed ye
 
 Run `npm install` in project root directory to install dependencies
 
+Set `backendBaseUrl: 'http://127.0.0.1:8080/backend'` to sec/environments/environment.ts for development mode
+
 Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
