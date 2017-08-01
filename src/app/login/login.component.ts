@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
+              localStorage.setItem('token', data['resourceSet']['resources'][0]['token']);
               console.log(data['resourceSet']['resources'][0]['token']);
             }
           },

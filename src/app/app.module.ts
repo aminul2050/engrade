@@ -11,8 +11,8 @@ import { AlertComponent } from './_directives/index';
 import { AlertService, ApiService } from './_services/index';
 
 import { AppComponent } from './app.component';
-import {LoginComponent} from './_login/login.component';
-import {HomeComponent} from './_home/home.component';
+import {LoginComponent} from './login/login.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +30,15 @@ import {HomeComponent} from './_home/home.component';
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: '/_login',
+        redirectTo: '/login',
         pathMatch: 'full'
       },
       {
-        path: '_login',
+        path: 'login',
         component: LoginComponent
       },
       {
-        path: '_home',
+        path: 'home',
         component: HomeComponent
       }
     ])
