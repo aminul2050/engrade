@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../_services/index';
+import {ApiService, AlertService} from '../_services/index';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RequestOptions, Response} from '@angular/http';
 
@@ -11,19 +11,19 @@ export class HomeComponent implements OnInit {
   private token = localStorage.getItem('token') || '';
   public taskList;
 
-  constructor(private http: HttpClient, private api: ApiService) {
-  }
+  constructor(private http: HttpClient,
+              private api: ApiService,
+              private alertService: AlertService
+            ) {  }
 
   ngOnInit(): void {
     console.log(this.token);
     if ( this.token ) {
       this.http
-        .post(this.api.getUrl('1/getPage'), null, {
+        .post(this.api.getUrl('/1/getPage'), null, {
           headers: new HttpHeaders()
-            .set('Authorization', this.token)
             .set('X-Auth-Token', this.token)
             .set('Access-Control-Allow-Origin', '*')
-            .set('itValue', '12.4.3.65')
             .set('Content-type', 'application/json')
         })
         .subscribe(
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
             }
           },
           err => {
-            console.log('Something went wrong!');
+            this.alertService.error('Something went wrong!');
           }
         );
     } else {

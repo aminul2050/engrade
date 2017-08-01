@@ -41,15 +41,18 @@ import {RunComponent} from './run/run.component';
       },
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'run',
-        component: RunComponent
+        component: RunComponent,
+        canActivate: [AuthGuard]
       }
     ])
   ],
   providers: [
+    AuthGuard,
     AlertService,
     ApiService,
     LoginService

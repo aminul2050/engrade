@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  backendBaseUrl: 'http://127.0.0.1:8080/backend/engrade'
+  backendBaseUrl: 'http://127.0.0.1:8080/backend'
 };

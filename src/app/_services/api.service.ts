@@ -7,7 +7,7 @@ export class ApiService {
 
   constructor() { }
   getUrl(url) {
-    return environment.backendBaseUrl + url;
+    return environment.backendBaseUrl + '/engrade' + url;
   }
   getHeader(authToken) {
     this.headers.append('Content-Type', 'application/json');

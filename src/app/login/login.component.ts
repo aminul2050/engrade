@@ -20,11 +20,14 @@ export class LoginComponent implements OnInit {
               private http: HttpClient,
               private api: ApiService,
               private alertService: AlertService,
-              private router: Router) {
+              private router: Router,
+              private loginService: LoginService) {
     this.parentRouter = router;
   }
 
   ngOnInit() {
+    // reset login status
+    this.loginService.logout();
     this.myForm = this._fb.group({
       username: ['', <any>Validators.required],
       password: ['', <any>Validators.required]
@@ -50,7 +53,6 @@ export class LoginComponent implements OnInit {
           },
           err => {
             this.alertService.error('wrong username or password');
-            // alert('wrong username or password');
           }
         );
     }
