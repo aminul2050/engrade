@@ -13,13 +13,15 @@ import { AlertService, ApiService } from './_services/index';
 import { AppComponent } from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
+import {RunComponent} from './run/run.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlertComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RunComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,10 @@ import {HomeComponent} from './home/home.component';
       {
         path: 'home',
         component: HomeComponent
+      },
+      {
+        path: 'run',
+        component: RunComponent
       }
     ])
   ],
