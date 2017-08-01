@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import {User} from '../_model/user';
 import {HttpClient} from '@angular/common/http';
 import { ApiService } from '../_services/index';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -14,8 +15,10 @@ import { ApiService } from '../_services/index';
 export class LoginComponent implements OnInit {
   public myForm: FormGroup;
   public submitted: boolean;
+  private parentRouter;
 
-  constructor(private _fb: FormBuilder, private http: HttpClient, private api: ApiService) {
+  constructor(private _fb: FormBuilder, private http: HttpClient, private api: ApiService, private router: Router) {
+    this.parentRouter = router;
   }
 
   ngOnInit() {
@@ -38,6 +41,7 @@ export class LoginComponent implements OnInit {
           data => {
             if ( data['statusCode'] === 200 ) {
               localStorage.setItem('token', data['resourceSet']['resources'][0]['token']);
+              this.parentRouter.navigate(['/home']);
               console.log(data['resourceSet']['resources'][0]['token']);
             }
           },

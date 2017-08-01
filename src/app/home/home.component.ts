@@ -9,6 +9,7 @@ import {RequestOptions, Response} from '@angular/http';
 })
 export class HomeComponent implements OnInit {
   private token = localStorage.getItem('token') || '';
+  public taskList;
 
   constructor(private http: HttpClient, private api: ApiService) {
   }
@@ -28,8 +29,8 @@ export class HomeComponent implements OnInit {
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
-              localStorage.setItem('token', data['resourceSet']['resources'][0]['token']);
-              console.log(data['resourceSet']['resources'][0]['token']);
+              this.taskList = data['resourceSet']['resources'];
+              console.log(data);
             }
           },
           err => {
