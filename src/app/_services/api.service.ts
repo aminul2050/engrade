@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ApiService {
-  private baseUrl = 'http://127.0.0.1:8080/backend/engrade';
   private headers = new Headers();
 
   constructor() { }
   getUrl(url) {
-    return this.baseUrl + '/' + url;
+    return environment.backendBaseUrl + url;
   }
   getHeader(authToken) {
     this.headers.append('Content-Type', 'application/json');
