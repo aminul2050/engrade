@@ -4,12 +4,12 @@ import { RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {JsonpModule, Jsonp, Response} from '@angular/http';
+import { HttpModule } from '@angular/http';
+
+import { AuthGuard } from './_guards/index';
+import { AlertService, ApiService, LoginService } from './_services/index';
 
 import { AlertComponent } from './_directives/index';
-
-import { AlertService, ApiService } from './_services/index';
-
 import { AppComponent } from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
@@ -28,7 +28,7 @@ import {RunComponent} from './run/run.component';
     ReactiveFormsModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    JsonpModule,
+    HttpModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -51,7 +51,8 @@ import {RunComponent} from './run/run.component';
   ],
   providers: [
     AlertService,
-    ApiService
+    ApiService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
