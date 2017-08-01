@@ -14,7 +14,7 @@ Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. Th
 To change out/build directory `.angular-cli.json` outDir
 
 Set `backendBaseUrl: 'http://127.0.0.1:8080/backend'` to sec/environments/environment.prod.ts for production mode
-Run `ng build -prod --base-href='http://127.0.0.1:8090/engrade'` to build the project in production. Find the build project in outDir. By Default its engrade now. Copy the directory and paste in tomcate webapp. It should work now.
+Run `ng build -prod --base-href=http://127.0.0.1:8090/engrade` to build the project in production. Find the build project in outDir. By Default its engrade now. Copy the directory and paste in tomcate webapp. It should work now.
 Note: --base-href is very important. It will be the root folder in your instance
 
 ## Running unit tests
