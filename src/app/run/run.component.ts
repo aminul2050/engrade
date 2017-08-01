@@ -8,6 +8,7 @@ import {RequestOptions, Response} from '@angular/http';
   templateUrl: './run.component.html',
 })
 export class RunComponent {
+  public message;
   private token = localStorage.getItem('token') || '';
 
   constructor(private http: HttpClient, private api: ApiService) {
@@ -26,7 +27,7 @@ export class RunComponent {
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
-              alert('Sucessfully Run');
+              this.message = 'Successfully Run';
             }
           },
           err => {
