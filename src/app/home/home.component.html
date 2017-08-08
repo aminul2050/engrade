@@ -5,7 +5,6 @@
     <th>taskId</th>
     <th>taskState</th>
     <th>startDate</th>
-    <th>finishDate</th>
   </tr>
   </thead>
   <ng-container *ngFor="let row of taskList">
@@ -13,7 +12,6 @@
       <td>{{row.taskId}}</td>
       <td>{{row.taskState}}</td>
       <td>{{row.startDate | date:'short'}}</td>
-      <td>{{row.finishDate | date:'short'}}</td>
     </tr>
   </ng-container>
 
