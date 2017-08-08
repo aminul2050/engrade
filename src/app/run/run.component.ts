@@ -18,7 +18,7 @@ export class RunComponent {
   runTask(event) {
     if ( this.token ) {
       this.http
-        .post(this.api.getUrl('/1/run'), null, {
+        .get(this.api.getUrl('/run'), {
           headers: new HttpHeaders()
             .set('X-Auth-Token', this.token)
             .set('Access-Control-Allow-Origin', '*')

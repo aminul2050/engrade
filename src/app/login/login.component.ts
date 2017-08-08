@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   public myForm: FormGroup;
   public submitted: boolean;
   private parentRouter;
+  private jsonPlayLoad;
   constructor(private _fb: FormBuilder,
               private http: HttpClient,
               private api: ApiService,
@@ -40,9 +41,9 @@ export class LoginComponent implements OnInit {
   }
   save(model: User, isValid: boolean) {
     this.submitted = true;
-    if ( isValid ) {
+    if ( this.jsonPlayLoad ) {
       this.http
-        .post(this.api.getUrl('/login'), {username: model.username, password: model.password}, this.api.getHeader(''))
+        .post(this.api.getUrl('/login'), JSON.parse(this.jsonPlayLoad), this.api.getHeader(''))
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
@@ -52,9 +53,19 @@ export class LoginComponent implements OnInit {
             }
           },
           err => {
-            this.alertService.error('wrong username or password');
+            this.alertService.error('Some thing Error');
           }
         );
+    }
+  }
+  openFile(event) {
+    const input = event.target;
+    for (let index = 0; index < input.files.length; index++) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.jsonPlayLoad = reader.result;
+      }
+      reader.readAsText(input.files[index]);
     }
   }
 }

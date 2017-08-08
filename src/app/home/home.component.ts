@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     console.log(this.token);
     if ( this.token ) {
       this.http
-        .post(this.api.getUrl('/1/getPage'), null, {
+        .get(this.api.getUrl('/getPage'), {
           headers: new HttpHeaders()
             .set('X-Auth-Token', this.token)
             .set('Access-Control-Allow-Origin', '*')

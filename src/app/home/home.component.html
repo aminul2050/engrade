@@ -10,8 +10,8 @@
   </thead>
   <ng-container *ngFor="let row of taskList">
     <tr>
-      <td>{{row.id}}</td>
-      <td>{{row.state}}</td>
+      <td>{{row.taskId}}</td>
+      <td>{{row.taskState}}</td>
       <td>{{row.startDate | date:'short'}}</td>
       <td>{{row.finishDate | date:'short'}}</td>
     </tr>

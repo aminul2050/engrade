@@ -9,24 +9,21 @@ const loginUrl = '/login';
 @Injectable()
 export class LoginService {
   public token: string;
+  public currentUser;
 
   constructor(private http: Http) {
-    // set token if saved in local storage
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser && currentUser.token;
   }
 
   login(username: string, password: string): Observable<boolean> {
     return this.http.post(environment.backendBaseUrl + loginUrl, {username: username, password: password}, null)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let token = response.json() && response.json().token;
-        if (token) {
+        this.token = response.json() && response.json().token;
+        if (this.token) {
           // set token property
-          this.token = token;
-
+          this.token = this.token;
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: this.token }));
 
           // return true to indicate successful login
           return true;
@@ -34,7 +31,8 @@ export class LoginService {
           // return false to indicate failed login
           return false;
         }
-      });
+      })
+      .catch ((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   logout(): void {
