@@ -64,9 +64,10 @@ export class LoginComponent implements OnInit {
   }
   save(model: EngradePayload, isValid: boolean) {
     this.submitted = true;
-    if ( this.jsonPlayLoad ) {
+    const data = this.makeJson(model);
+    if ( data ) {
       this.http
-        .post(this.api.getUrl('/login'), this.makeJson(model), this.api.getHeader(''))
+        .post(this.api.getUrl('/login'), data, this.api.getHeader(''))
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
