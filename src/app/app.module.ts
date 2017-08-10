@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {RunComponent} from './run/run.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import {RunComponent} from './run/run.component';
     AlertComponent,
     LoginComponent,
     HomeComponent,
-    RunComponent
+    RunComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import {RunComponent} from './run/run.component';
     NgbModule.forRoot(),
     HttpClientModule,
     HttpModule,
+    Ng2SmartTableModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -55,7 +58,8 @@ import {RunComponent} from './run/run.component';
     AuthGuard,
     AlertService,
     ApiService,
-    LoginService
+    LoginService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
