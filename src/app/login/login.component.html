@@ -1,73 +1,73 @@
 <form class="form-signin" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
   <h1>Login</h1>
-  <!--<div class="form-group">
+  <div class="form-group">
     <label for="customSchoolId">Custom School Id</label>
-    <input type="number" class="form-control" id="customSchoolId" formControlName="custom_schoolid" placeholder="School Id" autofocus>
-    <small [hidden]="myForm.controls.custom_school_name.valid || (myForm.controls.custom_school_name.pristine && !submitted)" class="text-danger">
+    <input type="number" class="form-control" id="customSchoolId" formControlName="customSchoolId" placeholder="School Id" autofocus>
+    <small [hidden]="myForm.controls.customSchoolId.valid || (myForm.controls.customSchoolId.pristine && !submitted)" class="text-danger">
       School Id is required
     </small>
   </div>
   <div class="form-group">
     <label for="customSchoolName">Custom School Name</label>
-    <input type="text" class="form-control" id="customSchoolName" formControlName="custom_school_name" placeholder="School Name" autofocus>
-    <small [hidden]="myForm.controls.custom_school_name.valid || (myForm.controls.custom_school_name.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="customSchoolName" formControlName="customSchoolName" placeholder="School Name" autofocus>
+    <small [hidden]="myForm.controls.customSchoolName.valid || (myForm.controls.customSchoolName.pristine && !submitted)" class="text-danger">
       School Name is required
     </small>
   </div>
   <div class="form-group">
     <label for="customDistrictId">Custom District Id</label>
-    <input type="number" class="form-control" id="customDistrictId" formControlName="custom_districtid" placeholder="District Id" autofocus>
-    <small [hidden]="myForm.controls.custom_districtid.valid || (myForm.controls.custom_districtid.pristine && !submitted)" class="text-danger">
+    <input type="number" class="form-control" id="customDistrictId" formControlName="customDistrictId" placeholder="District Id" autofocus>
+    <small [hidden]="myForm.controls.customDistrictId.valid || (myForm.controls.customDistrictId.pristine && !submitted)" class="text-danger">
       District Id is required
     </small>
   </div>
   <div class="form-group">
     <label for="customDistrictName">Custom District Name</label>
-    <input type="text" class="form-control" id="customDistrictName" formControlName="custom_district_name" placeholder="District Name" autofocus>
-    <small [hidden]="myForm.controls.custom_district_name.valid || (myForm.controls.custom_district_name.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="customDistrictName" formControlName="customDistrictName" placeholder="District Name" autofocus>
+    <small [hidden]="myForm.controls.customDistrictName.valid || (myForm.controls.customDistrictName.pristine && !submitted)" class="text-danger">
       District Name is required
     </small>
   </div>
   <div class="form-group">
     <label for="contextId">Context Id</label>
-    <input type="number" class="form-control" id="contextId" formControlName="context_id" placeholder="Context Id" autofocus>
-    <small [hidden]="myForm.controls.context_id.valid || (myForm.controls.context_id.pristine && !submitted)" class="text-danger">
+    <input type="number" class="form-control" id="contextId" formControlName="contextId" placeholder="Context Id" autofocus>
+    <small [hidden]="myForm.controls.contextId.valid || (myForm.controls.contextId.pristine && !submitted)" class="text-danger">
       Context Id is required
     </small>
   </div>
 
   <div class="form-group">
     <label for="contextTitle">Context Title</label>
-    <input type="text" class="form-control" id="contextTitle" formControlName="context_title" placeholder="Context Title" autofocus>
-    <small [hidden]="myForm.controls.context_title.valid || (myForm.controls.context_title.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="contextTitle" formControlName="contextTitle" placeholder="Context Title" autofocus>
+    <small [hidden]="myForm.controls.contextTitle.valid || (myForm.controls.contextTitle.pristine && !submitted)" class="text-danger">
       Context Title is required
     </small>
   </div>
   <div class="form-group">
     <label for="contextLabel">Context Label</label>
-    <input type="text" class="form-control" id="contextLabel" formControlName="context_label" placeholder="Context Label" autofocus>
-    <small [hidden]="myForm.controls.context_label.valid || (myForm.controls.context_label.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="contextLabel" formControlName="contextLabel" placeholder="Context Label" autofocus>
+    <small [hidden]="myForm.controls.contextLabel.valid || (myForm.controls.contextLabel.pristine && !submitted)" class="text-danger">
       Context Label is required
     </small>
   </div>
   <div class="form-group">
     <label for="ltiMessageType">Lti Message Type</label>
-    <input type="text" class="form-control" id="ltiMessageType" formControlName="lti_message_type" placeholder="Lti Message Type" autofocus>
-    <small [hidden]="myForm.controls.lti_message_type.valid || (myForm.controls.lti_message_type.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="ltiMessageType" formControlName="ltiMessageType" placeholder="Lti Message Type" autofocus>
+    <small [hidden]="myForm.controls.ltiMessageType.valid || (myForm.controls.ltiMessageType.pristine && !submitted)" class="text-danger">
       Lti Message Type is required
     </small>
   </div>
   <div class="form-group">
     <label for="ltiVersion">Lti Version</label>
-    <input type="text" class="form-control" id="ltiVersion" formControlName="lti_version" placeholder="Lti Version" autofocus>
-    <small [hidden]="myForm.controls.lti_version.valid || (myForm.controls.lti_version.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="ltiVersion" formControlName="ltiVersion" placeholder="Lti Version" autofocus>
+    <small [hidden]="myForm.controls.ltiVersion.valid || (myForm.controls.ltiVersion.pristine && !submitted)" class="text-danger">
       Lti Version is required
     </small>
   </div>
   <div class="form-group">
     <label for="ltiVersion">User Id</label>
-    <input type="number" class="form-control" id="userId" formControlName="user_id" placeholder="User Id" autofocus>
-    <small [hidden]="myForm.controls.user_id.valid || (myForm.controls.user_id.pristine && !submitted)" class="text-danger">
+    <input type="number" class="form-control" id="userId" formControlName="userId" placeholder="User Id" autofocus>
+    <small [hidden]="myForm.controls.userId.valid || (myForm.controls.userId.pristine && !submitted)" class="text-danger">
       User Id is required
     </small>
   </div>
@@ -80,109 +80,109 @@
   </div>
   <div class="form-group">
     <label for="lisPersonNameFull">Lti Person Name Full</label>
-    <input type="text" class="form-control" id="lisPersonNameFull" formControlName="lis_person_name_full" placeholder="Lti Person Name Full" autofocus>
-    <small [hidden]="myForm.controls.lis_person_name_full.valid || (myForm.controls.lis_person_name_full.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="lisPersonNameFull" formControlName="lisPersonNameFull" placeholder="Lti Person Name Full" autofocus>
+    <small [hidden]="myForm.controls.lisPersonNameFull.valid || (myForm.controls.lisPersonNameFull.pristine && !submitted)" class="text-danger">
       Lti Person Name Full is required
     </small>
   </div>
   <div class="form-group">
     <label for="lisPersonNameGiven">Lti Person Name Given</label>
-    <input type="text" class="form-control" id="lisPersonNameGiven" formControlName="lis_person_name_given" placeholder="Lti Person Name Given" autofocus>
-    <small [hidden]="myForm.controls.lis_person_name_given.valid || (myForm.controls.lis_person_name_given.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="lisPersonNameGiven" formControlName="lisPersonNameGiven" placeholder="Lti Person Name Given" autofocus>
+    <small [hidden]="myForm.controls.lisPersonNameGiven.valid || (myForm.controls.lisPersonNameGiven.pristine && !submitted)" class="text-danger">
       Lti Person Name Given is required
     </small>
   </div>
   <div class="form-group">
     <label for="lisPersonNameFamily">Lti Person Name Family</label>
-    <input type="text" class="form-control" id="lisPersonNameFamily" formControlName="lis_person_name_family" placeholder="Lti Person Name Family" autofocus>
-    <small [hidden]="myForm.controls.lis_person_name_family.valid || (myForm.controls.lis_person_name_family.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="lisPersonNameFamily" formControlName="lisPersonNameGiven" placeholder="Lti Person Name Family" autofocus>
+    <small [hidden]="myForm.controls.lisPersonNameFamily.valid || (myForm.controls.lisPersonNameFamily.pristine && !submitted)" class="text-danger">
       Lti Person Name Family is required
     </small>
   </div>
   <div class="form-group">
     <label for="lisPersonContactEmailPrimary">Lti Person Contact Email Primary</label>
-    <input type="text" class="form-control" id="lisPersonContactEmailPrimary" formControlName="lis_person_contact_email_primary" placeholder="Lti Person Contact Email Primary" autofocus>
-    <small [hidden]="myForm.controls.lis_person_contact_email_primary.valid || (myForm.controls.lis_person_contact_email_primary.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="lisPersonContactEmailPrimary" formControlName="lisPersonContactEmailPrimary" placeholder="Lti Person Contact Email Primary" autofocus>
+    <small [hidden]="myForm.controls.lisPersonContactEmailPrimary.valid || (myForm.controls.lisPersonContactEmailPrimary.pristine && !submitted)" class="text-danger">
       Lti Person Contact Email Primary is required
     </small>
   </div>
   <div class="form-group">
     <label for="launchPresentationLocale">Launch Presentation Locale</label>
-    <input type="text" class="form-control" id="launchPresentationLocale" formControlName="launch_presentation_locale" placeholder="Launch Presentation Locale" autofocus>
-    <small [hidden]="myForm.controls.launch_presentation_locale.valid || (myForm.controls.launch_presentation_locale.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="launchPresentationLocale" formControlName="launchPresentationLocale" placeholder="Launch Presentation Locale" autofocus>
+    <small [hidden]="myForm.controls.launchPresentationLocale.valid || (myForm.controls.launchPresentationLocale.pristine && !submitted)" class="text-danger">
       Launch Presentation Locale is required
     </small>
   </div>
   <div class="form-group">
     <label for="customAppsesid">Appses Id</label>
-    <input type="text" class="form-control" id="customAppsesid" formControlName="custom_appsesid" placeholder="Appses Id" autofocus>
-    <small [hidden]="myForm.controls.custom_appsesid.valid || (myForm.controls.custom_appsesid.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="customAppsesid" formControlName="customAppsesid" placeholder="Appses Id" autofocus>
+    <small [hidden]="myForm.controls.customAppsesid.valid || (myForm.controls.customAppsesid.pristine && !submitted)" class="text-danger">
       Appses Id is required
     </small>
   </div>
   <div class="form-group">
     <label for="resourceLinkId">Resource Link Id</label>
-    <input type="number" class="form-control" id="resourceLinkId" formControlName="resource_link_id" placeholder="Resource Link Id" autofocus>
-    <small [hidden]="myForm.controls.resource_link_id.valid || (myForm.controls.resource_link_id.pristine && !submitted)" class="text-danger">
+    <input type="number" class="form-control" id="resourceLinkId" formControlName="resourceLinkId" placeholder="Resource Link Id" autofocus>
+    <small [hidden]="myForm.controls.resourceLinkId.valid || (myForm.controls.resourceLinkId.pristine && !submitted)" class="text-danger">
       Resource Link Id is required
     </small>
   </div>
   <div class="form-group">
     <label for="lisOutcomeServiceUrl">Lis Outcome Service Url</label>
-    <input type="text" class="form-control" id="lisOutcomeServiceUrl" formControlName="lis_outcome_service_url" placeholder="Lis Outcome Service Url" autofocus>
-    <small [hidden]="myForm.controls.lis_outcome_service_url.valid || (myForm.controls.lis_outcome_service_url.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="lisOutcomeServiceUrl" formControlName="lisOutcomeServiceUrl" placeholder="Lis Outcome Service Url" autofocus>
+    <small [hidden]="myForm.controls.lisOutcomeServiceUrl.valid || (myForm.controls.lisOutcomeServiceUrl.pristine && !submitted)" class="text-danger">
       Lis Outcome Service Url is required
     </small>
   </div>
   <div class="form-group">
     <label for="oauthVersion">Oauth Version</label>
-    <input type="text" class="form-control" id="oauthVersion" formControlName="oauth_version" placeholder="Oauth Version" autofocus>
-    <small [hidden]="myForm.controls.oauth_version.valid || (myForm.controls.oauth_version.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="oauthVersion" formControlName="oauthVersion" placeholder="Oauth Version" autofocus>
+    <small [hidden]="myForm.controls.oauthVersion.valid || (myForm.controls.oauthVersion.pristine && !submitted)" class="text-danger">
       Oauth Version is required
     </small>
   </div>
   <div class="form-group">
     <label for="oauthNonce">Oauth Nonce</label>
-    <input type="text" class="form-control" id="oauthNonce" formControlName="oauth_nonce" placeholder="Oauth Nonce" autofocus>
-    <small [hidden]="myForm.controls.oauth_nonce.valid || (myForm.controls.oauth_nonce.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="oauthNonce" formControlName="oauthNonce" placeholder="Oauth Nonce" autofocus>
+    <small [hidden]="myForm.controls.oauthNonce.valid || (myForm.controls.oauthNonce.pristine && !submitted)" class="text-danger">
       Oauth Nonce is required
     </small>
   </div>
   <div class="form-group">
     <label for="oauthTimestamp">Oauth Timestamp</label>
-    <input type="number" class="form-control" id="oauthTimestamp" formControlName="oauth_timestamp" placeholder="Oauth Timestamp" autofocus>
-    <small [hidden]="myForm.controls.oauth_timestamp.valid || (myForm.controls.oauth_timestamp.pristine && !submitted)" class="text-danger">
+    <input type="number" class="form-control" id="oauthTimestamp" formControlName="oauthTimestamp" placeholder="Oauth Timestamp" autofocus>
+    <small [hidden]="myForm.controls.oauthTimestamp.valid || (myForm.controls.oauthTimestamp.pristine && !submitted)" class="text-danger">
       Oauth Timestamp is required
     </small>
   </div>
   <div class="form-group">
     <label for="oauthConsumerKey">Oauth Consumer Key</label>
-    <input type="text" class="form-control" id="oauthConsumerKey" formControlName="oauth_consumer_key" placeholder="Oauth Consumer Key" autofocus>
-    <small [hidden]="myForm.controls.oauth_consumer_key.valid || (myForm.controls.oauth_consumer_key.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="oauthConsumerKey" formControlName="oauthConsumerKey" placeholder="Oauth Consumer Key" autofocus>
+    <small [hidden]="myForm.controls.oauthConsumerKey.valid || (myForm.controls.oauthConsumerKey.pristine && !submitted)" class="text-danger">
       Oauth Consumer Key is required
     </small>
   </div>
   <div class="form-group">
     <label for="oauthSignatureMethod">Oauth Signature Method</label>
-    <input type="text" class="form-control" id="oauthSignatureMethod" formControlName="oauth_signature_method" placeholder="Oauth Signature Method" autofocus>
-    <small [hidden]="myForm.controls.oauth_signature_method.valid || (myForm.controls.oauth_signature_method.pristine && !submitted)" class="text-danger">
+    <input type="text" class="form-control" id="oauthSignatureMethod" formControlName="oauthSignatureMethod" placeholder="Oauth Signature Method" autofocus>
+    <small [hidden]="myForm.controls.oauthSignatureMethod.valid || (myForm.controls.oauthSignatureMethod.pristine && !submitted)" class="text-danger">
       Oauth Signature Method is required
     </small>
   </div>
   <div class="form-group">
-    <label for="oauthCallback">Oauth Callback</label>
-    <input type="text" class="form-control" id="oauthCallback" formControlName="oauth_callback" placeholder="Oauth Callback" autofocus>
-    <small [hidden]="myForm.controls.oauth_callback.valid || (myForm.controls.oauth_callback.pristine && !submitted)" class="text-danger">
-      Oauth Callback is required
+    <label for="oauthSignature">Oauth Signature</label>
+    <input type="text" class="form-control" id="oauthSignature" formControlName="oauthSignature" placeholder="Oauth Signature" autofocus>
+    <small [hidden]="myForm.controls.oauthSignature.valid || (myForm.controls.oauthSignature.pristine && !submitted)" class="text-danger">
+      Oauth Signature is required
     </small>
   </div>
   <div class="form-group">
-    <label for="oauthSignature">Oauth Signature</label>
-    <input type="text" class="form-control" id="oauthSignature" formControlName="oauth_signature" placeholder="Oauth Signature" autofocus>
-    <small [hidden]="myForm.controls.oauth_signature.valid || (myForm.controls.oauth_signature.pristine && !submitted)" class="text-danger">
-      Oauth Signature is required
+    <label for="oauthCallback">Oauth Callback</label>
+    <input type="text" class="form-control" id="oauthCallback" formControlName="oauthCallback" placeholder="Oauth Callback" autofocus>
+    <small [hidden]="myForm.controls.oauthCallback.valid || (myForm.controls.oauthCallback.pristine && !submitted)" class="text-danger">
+      Oauth Callback is required
     </small>
-  </div>-->
+  </div>
   <div class="form-group">
     <input type="file" accept="text/plain" multiple (change)="openFile($event)">
   </div>

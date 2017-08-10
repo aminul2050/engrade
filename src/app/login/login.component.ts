@@ -27,35 +27,34 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // reset login status
     this.loginService.logout();
     this.myForm = this._fb.group({
-      custom_schoolid: ['', <any>Validators.required],
-      custom_school_name: ['', <any>Validators.required],
+      customSchoolId: ['', <any>Validators.required],
+      customSchoolName: ['', <any>Validators.required],
       customDistrictId: ['', <any>Validators.required],
-      custom_district_name: ['', <any>Validators.required],
-      context_id: ['', <any>Validators.required],
-      context_title: ['', <any>Validators.required],
-      context_label: ['', <any>Validators.required],
-      lti_message_type: ['', <any>Validators.required],
-      lti_version: ['', <any>Validators.required],
-      user_id: ['', <any>Validators.required],
+      customDistrictName: ['', <any>Validators.required],
+      contextId: ['', <any>Validators.required],
+      contextTitle: ['', <any>Validators.required],
+      contextLabel: ['', <any>Validators.required],
+      ltiMessageType: ['', <any>Validators.required],
+      ltiVersion: ['', <any>Validators.required],
+      userId: ['', <any>Validators.required],
       roles: ['', <any>Validators.required],
-      lis_person_name_full: ['', <any>Validators.required],
-      lis_person_name_given: ['', <any>Validators.required],
-      lis_person_name_family: ['', <any>Validators.required],
-      lis_person_contact_email_primary: ['', <any>Validators.required],
-      launch_presentation_locale: ['', <any>Validators.required],
-      custom_appsesid: ['', <any>Validators.required],
-      resource_link_id: ['', <any>Validators.required],
-      lis_outcome_service_url: ['', <any>Validators.required],
-      oauth_version: ['', <any>Validators.required],
-      oauth_nonce: ['', <any>Validators.required],
-      oauth_timestamp: ['', <any>Validators.required],
-      oauth_consumer_key: ['', <any>Validators.required],
-      oauth_signature_method: ['', <any>Validators.required],
-      oauth_callback: ['', <any>Validators.required],
-      oauth_signature: ['', <any>Validators.required]
+      lisPersonNameFull: ['', <any>Validators.required],
+      lisPersonNameGiven: ['', <any>Validators.required],
+      lisPersonNameFamily: ['', <any>Validators.required],
+      lisPersonContactEmailPrimary: ['', <any>Validators.required],
+      launchPresentationLocale: ['', <any>Validators.required],
+      customAppsesid: ['', <any>Validators.required],
+      resourceLinkId: ['', <any>Validators.required],
+      lisOutcomeServiceUrl: ['', <any>Validators.required],
+      oauthVersion: ['', <any>Validators.required],
+      oauthNonce: ['', <any>Validators.required],
+      oauthTimestamp: ['', <any>Validators.required],
+      oauthConsumerKey: ['', <any>Validators.required],
+      oauthSignatureMethod: ['', <any>Validators.required],
+      oauthCallback: ['', <any>Validators.required],
+      oauthSignature: ['', <any>Validators.required]
     });
     this.subcribeToFormChanges();
   }
@@ -65,13 +64,9 @@ export class LoginComponent implements OnInit {
   }
   save(model: EngradePayload, isValid: boolean) {
     this.submitted = true;
-   /* if ( model.custom_school_name ) {
-      this.jsonPlayLoad = JSON.stringify(model);
-    }
-    this.alertService.error(model.custom_school_name);*/
     if ( this.jsonPlayLoad ) {
       this.http
-        .post(this.api.getUrl('/login'), this.jsonPlayLoad, this.api.getHeader(''))
+        .post(this.api.getUrl('/login'), this.makeJson(model), this.api.getHeader(''))
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
@@ -92,8 +87,71 @@ export class LoginComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = () => {
         this.jsonPlayLoad = JSON.parse(reader.result);
+        this.myForm = this._fb.group(this.loadForm(this.jsonPlayLoad));
       }
       reader.readAsText(input.files[index]);
     }
+  }
+  loadForm(json) {
+    const engrade = {
+      'customSchoolId': json['custom_schoolid'],
+      'customSchoolName': json['custom_school_name'],
+      'customDistrictId': json['custom_districtid'],
+      'customDistrictName': json['custom_district_name'],
+      'contextId': json['context_id'],
+      'contextTitle': json['context_title'],
+      'contextLabel': json['context_label'],
+      'ltiMessageType': json['lti_message_type'],
+      'ltiVersion': json['lti_version'],
+      'userId': json['user_id'],
+      'roles': json['roles'],
+      'lisPersonNameFull': json['lis_person_name_full'],
+      'lisPersonNameGiven': json['lis_person_name_given'],
+      'lisPersonNameFamily': json['lis_person_name_family'],
+      'lisPersonContactEmailPrimary': json['lis_person_contact_email_primary'],
+      'launchPresentationLocale': json['launch_presentation_locale'],
+      'customAppsesid': json['custom_appsesid'],
+      'resourceLinkId': json['resource_link_id'],
+      'lisOutcomeServiceUrl': json['lis_outcome_service_url'],
+      'oauthVersion': json['oauth_version'],
+      'oauthNonce': json['oauth_nonce'],
+      'oauthTimestamp': json['oauth_timestamp'],
+      'oauthConsumerKey': json['oauth_consumer_key'],
+      'oauthSignatureMethod': json['oauth_signature_method'],
+      'oauthCallback': json['oauth_callback'],
+      'oauthSignature': json['oauth_signature'],
+    };
+    return engrade;
+  }
+  makeJson(engradePayLoad) {
+    const json = {
+      'custom_schoolid': engradePayLoad.customSchoolId,
+      'custom_school_name': engradePayLoad.customSchoolName,
+      'custom_districtid': engradePayLoad.customDistrictId,
+      'custom_district_name': engradePayLoad.customDistrictName,
+      'context_id': engradePayLoad.contextId,
+      'context_title': engradePayLoad.contextTitle,
+      'context_label': engradePayLoad.contextLabel,
+      'lti_message_type': engradePayLoad.ltiMessageType,
+      'lti_version': engradePayLoad.ltiVersion,
+      'user_id': engradePayLoad.userId,
+      'roles': engradePayLoad.roles,
+      'lis_person_name_full': engradePayLoad.lisPersonNameFull,
+      'lis_person_name_given': engradePayLoad.lisPersonNameGiven,
+      'lis_person_name_family': engradePayLoad.lisPersonNameFamily,
+      'lis_person_contact_email_primary': engradePayLoad.lisPersonContactEmailPrimary,
+      'launch_presentation_locale': engradePayLoad.launchPresentationLocale,
+      'custom_appsesid': engradePayLoad.customAppsesid,
+      'resource_link_id': engradePayLoad.resourceLinkId,
+      'lis_outcome_service_url': engradePayLoad.lisOutcomeServiceUrl,
+      'oauth_version': engradePayLoad.oauthVersion,
+      'oauth_nonce': engradePayLoad.oauthNonce,
+      'oauth_timestamp': engradePayLoad.oauthTimestamp,
+      'oauth_consumer_key': engradePayLoad.oauthConsumerKey,
+      'oauth_signature_method': engradePayLoad.oauthSignatureMethod,
+      'oauth_callback': engradePayLoad.oauthCallback,
+      'oauth_signature': engradePayLoad.oauthSignature
+    };
+    return json;
   }
 }

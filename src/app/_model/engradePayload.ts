@@ -1,28 +1,65 @@
-export interface EngradePayload {
-  custom_schoolid: number;
-  custom_school_name: string;
-  custom_districtid: number;
-  custom_district_name: string;
-  context_id: number;
-  context_title: string;
-  context_label: string;
-  lti_message_type: string;
-  lti_version: string;
-  user_id: number;
+export class EngradePayload {
+  customSchoolId: number;
+  customSchoolName: string;
+  customDistrictId: number;
+  customDistrictName: string;
+  contextId: number;
+  contextTitle: string;
+  contextLabel: string;
+  ltiMessageType: string;
+  ltiVersion: string;
+  userId: number;
   roles: string;
-  lis_person_name_full: string;
-  lis_person_name_given: string;
-  lis_person_name_family: string;
-  lis_person_contact_email_primary: string;
-  launch_presentation_locale: string;
-  custom_appsesid: string;
-  resource_link_id: number;
-  lis_outcome_service_url: string;
-  oauth_version: string;
-  oauth_nonce: string;
-  oauth_timestamp: number;
-  oauth_consumer_key: string;
-  oauth_signature_method: string;
-  oauth_callback: string;
-  oauth_signature: string;
+  lisPersonNameFull: string;
+  lisPersonNameGiven: string;
+  lisPersonNameFamily: string;
+  lisPersonContactEmailPrimary: string;
+  launchPresentationLocale: string;
+  customAppsesid: string;
+  resourceLinkId: number;
+  lisOutcomeServiceUrl: string;
+  oauthVersion: string;
+  oauthNonce: string;
+  oauthTimestamp: number;
+  oauthConsumerKey: string;
+  oauthSignatureMethod: string;
+  oauthCallback: string;
+  oauthSignature: string;
+  constructor(customSchoolId: number, customSchoolName: string,
+              customDistrictId: number, customDistrictName: string,
+              contextId: number, contextTitle: string, contextLabel: string,
+              ltiMessageType: string, ltiVersion: string, userId: number,
+              roles: string, lisPersonNameFull: string, lisPersonNameGiven: string,
+              lisPersonNameFamily: string, lisPersonContactEmailPrimary: string,
+              launchPresentationLocale: string, customAppsesid: string, resourceLinkId: number,
+              lisOutcomeServiceUrl: string, oauthVersion: string, oauthNonce: string,
+              oauthTimestamp: number, oauthConsumerKey: string, oauthSignatureMethod: string,
+              oauthCallback: string, oauthSignature: string) {
+  this.customSchoolId = customSchoolId;
+  this.customSchoolName = customSchoolName;
+  this.customDistrictId = customDistrictId;
+  this.customDistrictName = customDistrictName;
+  this.contextId = contextId;
+  this.contextTitle = contextTitle;
+  this.contextLabel = contextLabel;
+  this.ltiMessageType = ltiMessageType;
+  this.ltiVersion = ltiVersion;
+  this.userId = userId;
+  this.roles = roles;
+  this.lisPersonNameFull = lisPersonNameFull;
+  this.lisPersonNameGiven = lisPersonNameGiven;
+  this.lisPersonNameFamily = lisPersonNameFamily;
+  this.lisPersonContactEmailPrimary = lisPersonContactEmailPrimary;
+  this.launchPresentationLocale = launchPresentationLocale;
+  this.customAppsesid = customAppsesid;
+  this.resourceLinkId = resourceLinkId;
+  this.lisOutcomeServiceUrl = lisOutcomeServiceUrl;
+  this.oauthVersion = oauthVersion;
+  this.oauthNonce = oauthNonce;
+  this.oauthTimestamp = oauthTimestamp;
+  this.oauthConsumerKey = oauthConsumerKey;
+  this.oauthSignatureMethod = oauthSignatureMethod;
+  this.oauthCallback = oauthCallback;
+  this.oauthSignature = oauthSignature;
+  }
 }
