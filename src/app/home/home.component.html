@@ -1,4 +1,10 @@
 <h2>Home Page</h2>
+<input
+  type='text'
+  style='padding:8px;margin:15px auto;width:30%;'
+  placeholder='Type to filter the name column...'
+  (keyup)='updateFilter($event)'
+/>
 <ngx-datatable
   class="material"
   [rows]="rows"

@@ -11,4 +11,5 @@ export class Page {
   /*The current page number*/
   pageNumber = 0;
   sorting = 'id,asc';
+  filter = '';
 }

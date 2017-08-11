@@ -13,6 +13,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class TaskService {
   public pagedData;
   public taskList;
+  private url;
   private token = localStorage.getItem('token') || '';
 
   constructor(private http: HttpClient,
@@ -26,7 +27,16 @@ export class TaskService {
    * @returns {any} An observable containing the employee data
    */
   public getResults(page: Page): Observable<PagedData<Task>> {
-    return this.http.get(this.api.getUrl('/getPage?' + 'page=' + page.pageNumber + '&size=' + page.size + '&sort=' + page.sorting), {
+    if ( page.filter ) {
+      this.url = this.api.getUrl('/getPage?' + 'page=' + page.pageNumber + '&size=' +
+        page.size + '&sort=' + page.sorting + '&filter=' + page.filter);
+    } else {
+      this.url = this.api.getUrl('/getPage?' + 'page=' + page.pageNumber + '&size=' +
+        page.size + '&sort=' + page.sorting);
+    }
+
+
+    return this.http.get(this.url, {
       headers: new HttpHeaders()
         .set('X-Auth-Token', this.token)
         .set('Access-Control-Allow-Origin', '*')

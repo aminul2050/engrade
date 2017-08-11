@@ -62,6 +62,16 @@ export class HomeComponent implements OnInit {
       this.rows = pagedData.data;
     });
   }
+
+  updateFilter(event) {
+    const val = event.target.value.toLowerCase();
+    this.page.filter = val;
+    this.taskService.getResults(this.page).subscribe(pagedData => {
+      this.page = pagedData.page;
+      this.rows = pagedData.data;
+    });
+  }
+
   /*private authenticationToken(): RequestOptions {
     let login = JSON.parse(sessionStorage.getItem('currentLogin'));
     if (login && login.authenticationToken) {
