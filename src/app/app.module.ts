@@ -14,8 +14,9 @@ import { AppComponent } from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {RunComponent} from './run/run.component';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { DatePipe } from '@angular/common';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {TaskService} from './_services/task.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { DatePipe } from '@angular/common';
     NgbModule.forRoot(),
     HttpClientModule,
     HttpModule,
-    Ng2SmartTableModule,
+    NgxDatatableModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -59,6 +60,7 @@ import { DatePipe } from '@angular/common';
     AlertService,
     ApiService,
     LoginService,
+    TaskService,
     DatePipe
   ],
   bootstrap: [AppComponent]

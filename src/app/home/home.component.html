@@ -1,3 +1,15 @@
 <h2>Home Page</h2>
-<input #search class="search float-right" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
-<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+<ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columns]="columns"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [externalPaging]="true"
+  [count]="page.totalElements"
+  [offset]="page.pageNumber"
+  [limit]="page.size"
+  (page)='setPage($event)'>
+</ngx-datatable>

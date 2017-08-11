@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService, AlertService} from '../_services/index';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {RequestOptions, Response} from '@angular/http';
-import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
+import {TaskService} from '../_services/index';
 import { DatePipe } from '@angular/common';
+import {Page} from '../_model/page';
+import {Task} from '../_model/task';
+
 
 @Component({
   selector: 'app-home',
@@ -11,93 +11,38 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class HomeComponent implements OnInit {
-  private token = localStorage.getItem('token') || '';
-  public taskList;
-  public settings;
-  public source: LocalDataSource;
+  public page;
+  public rows;
+  public columns;
 
-  constructor(private http: HttpClient,
-              private api: ApiService,
-              private alertService: AlertService,
-              private datePipe: DatePipe
-            ) {
-    this.source = new LocalDataSource();
+
+
+  constructor(private taskService: TaskService) {
+    this.page = new Page();
+    this.rows = new Array<Task>();
+    this.columns = [
+      { prop: 'taskId' },
+      { name: 'taskState' },
+      { name: 'startDate' }
+    ];
+    this.page.pageNumber = 0;
+    this.page.size = 5;
   }
 
   ngOnInit(): void {
-    this.settings = {
-      columns: {
-        taskId: {
-          title: 'taskId',
-          filter: false
-        },
-        taskState: {
-          title: 'taskState',
-          filter: false
-        },
-        startDate: {
-          title: 'startDate',
-          filter: false,
-          valuePrepareFunction: (date) => {
-            const raw = new Date(date);
-            const formatted = this.datePipe.transform(raw, 'HH:MM:ss a dd MMM yyyy');
-            return formatted;
-          }
-        }
-      },
-      pager: {
-        display: true,
-        perPage: 5
-      },
-      actions: {
-        add: false,
-        edit: false,
-        delete: false,
-        position: 'right'
-      }
-    };
-    console.log(this.token);
-    if ( this.token ) {
-      this.http
-        .get(this.api.getUrl('/getPage'), {
-          headers: new HttpHeaders()
-            .set('X-Auth-Token', this.token)
-            .set('Access-Control-Allow-Origin', '*')
-            .set('Content-type', 'application/json')
-        })
-        .subscribe(
-          data => {
-            if ( data['statusCode'] === 200 ) {
-              this.taskList = data['resourceSet']['resources'];
-              this.source = new LocalDataSource(this.taskList);
-              console.log(data);
-            }
-          },
-          err => {
-            this.alertService.error('Something went wrong!');
-          }
-        );
-    } else {
-      console.log('Session time out. Please login again');
-    }
+    this.setPage({ offset: 0 });
   }
 
-  onSearch(query: string = '') {
-    this.source.setFilter([
-      // fields we want to include in the search
-      {
-        field: 'taskId',
-        search: query
-      },
-      {
-        field: 'taskState',
-        search: query
-      },
-      {
-        field: 'startDate',
-        search: query
-      },
-    ], false);
+  /**
+   * Populate the table with new data based on the page number
+   * @param page The page to select
+   */
+  setPage(pageInfo) {
+    this.page.pageNumber = pageInfo.offset;
+    this.taskService.getResults(this.page).subscribe(pagedData => {
+      this.page = pagedData.page;
+      this.rows = pagedData.data;
+    });
   }
   /*private authenticationToken(): RequestOptions {
     let login = JSON.parse(sessionStorage.getItem('currentLogin'));
