@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   public page;
   public rows;
   public columns;
+  public column;
+  public loading = false;
 
 
 
@@ -21,9 +23,9 @@ export class HomeComponent implements OnInit {
     this.page = new Page();
     this.rows = new Array<Task>();
     this.columns = [
-      { prop: 'taskId' },
-      { name: 'taskState' },
-      { name: 'startDate' }
+      { name: 'Task Id', sortable: true },
+      { name: 'Task State', sortable: true },
+      { name: 'Start Date', sortable: true }
     ];
     this.page.pageNumber = 0;
     this.page.size = 5;
@@ -39,6 +41,22 @@ export class HomeComponent implements OnInit {
    */
   setPage(pageInfo) {
     this.page.pageNumber = pageInfo.offset;
+    this.taskService.getResults(this.page).subscribe(pagedData => {
+      this.page = pagedData.page;
+      this.rows = pagedData.data;
+    });
+  }
+
+  onSort(event) {
+    const sort = event.sorts[0]['dir'];
+    if ( event.sorts[0]['prop'] === 'taskId' ) {
+      this.column = 'id';
+    } else if ( event.sorts[0]['prop'] === 'taskState' ) {
+      this.column = 'state';
+    } else {
+      this.column = event.sorts[0]['prop'];
+    }
+    this.page.sorting = this.column + ',' + sort;
     this.taskService.getResults(this.page).subscribe(pagedData => {
       this.page = pagedData.page;
       this.rows = pagedData.data;

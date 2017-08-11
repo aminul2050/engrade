@@ -10,4 +10,5 @@ export class Page {
   totalPages = 0;
   /*The current page number*/
   pageNumber = 0;
+  sorting = 'id,asc';
 }

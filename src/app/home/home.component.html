@@ -11,5 +11,23 @@
   [count]="page.totalElements"
   [offset]="page.pageNumber"
   [limit]="page.size"
-  (page)='setPage($event)'>
+  (page)='setPage($event)'
+  [externalSorting]="true"
+  [loadingIndicator]="loading"
+  (sort)="onSort($event)">
+  <ngx-datatable-column name="Task Id">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.taskId}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Task State">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.taskState}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Start Date">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.startDate | date: 'dd/MM/yyyy'}}
+    </ng-template>
+  </ngx-datatable-column>
 </ngx-datatable>
