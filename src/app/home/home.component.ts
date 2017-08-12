@@ -3,11 +3,14 @@ import {TaskService} from '../_services/index';
 import { DatePipe } from '@angular/common';
 import {Page} from '../_model/page';
 import {Task} from '../_model/task';
+import {ViewEncapsulation} from '@angular/core';
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [DatePipe]
 })
 export class HomeComponent implements OnInit {
