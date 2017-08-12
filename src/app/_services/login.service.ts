@@ -23,7 +23,7 @@ export class LoginService {
           // set token property
           this.token = this.token;
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: this.token }));
+          sessionStorage.setItem('currentUser', JSON.stringify({ username: username, token: this.token }));
 
           // return true to indicate successful login
           return true;
@@ -38,6 +38,6 @@ export class LoginService {
   logout(): void {
     // clear token remove user from local storage to log user out
     this.token = null;
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
 }

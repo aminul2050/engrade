@@ -14,7 +14,7 @@ export class TaskService {
   public pagedData;
   public taskList;
   private url;
-  private token = localStorage.getItem('token') || '';
+  private token = sessionStorage.getItem('token') || '';
 
   constructor(private http: HttpClient,
               private api: ApiService,
