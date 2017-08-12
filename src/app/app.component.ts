@@ -7,8 +7,13 @@ import { Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   public title: string;
+  public authLoggedIn = false;
 
   ngOnInit(): void {
     this.title = 'Engrade';
+    const auth = JSON.parse(sessionStorage.getItem('auth'));
+    if ( auth ) {
+        this.authLoggedIn = true;
+    }
   }
 }

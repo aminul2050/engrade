@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate() {
-    if (sessionStorage.getItem('token')) {
+    if (JSON.parse(sessionStorage.getItem('auth'))['token']) {
       // logged in so return true
       return true;
     }

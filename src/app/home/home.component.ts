@@ -74,15 +74,4 @@ export class HomeComponent implements OnInit {
       this.rows = pagedData.data;
     });
   }
-
-  /*private authenticationToken(): RequestOptions {
-    let login = JSON.parse(sessionStorage.getItem('currentLogin'));
-    if (login && login.authenticationToken) {
-      let headers = new Headers({
-        'Authorization': 'Basic ' + login.authenticationToken,
-        'Content-type': 'application/json',
-      });
-      return new RequestOptions({headers: headers});
-    }
-  }*/
 }

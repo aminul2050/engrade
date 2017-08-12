@@ -9,7 +9,7 @@ import {RequestOptions, Response} from '@angular/http';
 })
 export class RunComponent {
   public message;
-  private token = sessionStorage.getItem('token') || '';
+  private token = JSON.parse(sessionStorage.getItem('auth'))['token'] || '';
 
   constructor(private http: HttpClient,
               private api: ApiService,

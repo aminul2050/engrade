@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
-              sessionStorage.setItem('token', data['resourceSet']['resources'][0]['token']);
+              sessionStorage.setItem('auth', JSON.stringify(data['resourceSet']['resources'][0]));
               this.parentRouter.navigate(['/home']);
               console.log(data['resourceSet']['resources'][0]['token']);
             }
