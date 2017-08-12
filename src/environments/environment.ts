@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  backendBaseUrl: 'http://127.0.0.1:8080'
+  backendBaseUrl: 'http://127.0.0.1:8080',
+  paginationSize: 5
 };

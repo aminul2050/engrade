@@ -4,8 +4,11 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class ApiService {
   private headers = new Headers();
+  public paginationSize;
 
-  constructor() { }
+  constructor() {
+    this.paginationSize = environment.paginationSize;
+  }
   getUrl(url) {
     return environment.backendBaseUrl + '/engrade' + url;
   }
@@ -15,5 +18,8 @@ export class ApiService {
     this.headers.append('Access-Control-Allow-Origin', '*');
     this.headers.append('X-Auth-Token', authToken);
     return this.headers;
+  }
+  getNumberOfPage(totalRecords) {
+    return Math.ceil(totalRecords / this.paginationSize);
   }
 }
