@@ -1,190 +1,284 @@
-<form class="form-signin" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
   <h1>Login</h1>
-  <div class="form-group">
-    <label for="customSchoolId">Custom School Id</label>
-    <input type="number" class="form-control" id="customSchoolId" formControlName="customSchoolId" placeholder="School Id" autofocus>
-    <small [hidden]="myForm.controls.customSchoolId.valid || (myForm.controls.customSchoolId.pristine && !submitted)" class="text-danger">
-      School Id is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="customSchoolName">Custom School Name</label>
-    <input type="text" class="form-control" id="customSchoolName" formControlName="customSchoolName" placeholder="School Name" autofocus>
-    <small [hidden]="myForm.controls.customSchoolName.valid || (myForm.controls.customSchoolName.pristine && !submitted)" class="text-danger">
-      School Name is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="customDistrictId">Custom District Id</label>
-    <input type="number" class="form-control" id="customDistrictId" formControlName="customDistrictId" placeholder="District Id" autofocus>
-    <small [hidden]="myForm.controls.customDistrictId.valid || (myForm.controls.customDistrictId.pristine && !submitted)" class="text-danger">
-      District Id is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="customDistrictName">Custom District Name</label>
-    <input type="text" class="form-control" id="customDistrictName" formControlName="customDistrictName" placeholder="District Name" autofocus>
-    <small [hidden]="myForm.controls.customDistrictName.valid || (myForm.controls.customDistrictName.pristine && !submitted)" class="text-danger">
-      District Name is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="contextId">Context Id</label>
-    <input type="number" class="form-control" id="contextId" formControlName="contextId" placeholder="Context Id" autofocus>
-    <small [hidden]="myForm.controls.contextId.valid || (myForm.controls.contextId.pristine && !submitted)" class="text-danger">
-      Context Id is required
-    </small>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="customSchoolId">Custom School Id</label>
+        <input type="number" class="form-control" id="customSchoolId" formControlName="customSchoolId" placeholder="School Id" autofocus>
+        <small [hidden]="myForm.controls.customSchoolId.valid || (myForm.controls.customSchoolId.pristine && !submitted)" class="text-danger">
+          School Id is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="customSchoolName">Custom School Name</label>
+        <input type="text" class="form-control" id="customSchoolName" formControlName="customSchoolName" placeholder="School Name" autofocus>
+        <small [hidden]="myForm.controls.customSchoolName.valid || (myForm.controls.customSchoolName.pristine && !submitted)" class="text-danger">
+          School Name is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="customDistrictId">Custom District Id</label>
+        <input type="number" class="form-control" id="customDistrictId" formControlName="customDistrictId" placeholder="District Id" autofocus>
+        <small [hidden]="myForm.controls.customDistrictId.valid || (myForm.controls.customDistrictId.pristine && !submitted)" class="text-danger">
+          District Id is required
+        </small>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="contextTitle">Context Title</label>
-    <input type="text" class="form-control" id="contextTitle" formControlName="contextTitle" placeholder="Context Title" autofocus>
-    <small [hidden]="myForm.controls.contextTitle.valid || (myForm.controls.contextTitle.pristine && !submitted)" class="text-danger">
-      Context Title is required
-    </small>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="customDistrictName">Custom District Name</label>
+        <input type="text" class="form-control" id="customDistrictName" formControlName="customDistrictName" placeholder="District Name" autofocus>
+        <small [hidden]="myForm.controls.customDistrictName.valid || (myForm.controls.customDistrictName.pristine && !submitted)" class="text-danger">
+          District Name is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="contextId">Context Id</label>
+        <input type="number" class="form-control" id="contextId" formControlName="contextId" placeholder="Context Id" autofocus>
+        <small [hidden]="myForm.controls.contextId.valid || (myForm.controls.contextId.pristine && !submitted)" class="text-danger">
+          Context Id is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="contextTitle">Context Title</label>
+        <input type="text" class="form-control" id="contextTitle" formControlName="contextTitle" placeholder="Context Title" autofocus>
+        <small [hidden]="myForm.controls.contextTitle.valid || (myForm.controls.contextTitle.pristine && !submitted)" class="text-danger">
+          Context Title is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="contextLabel">Context Label</label>
-    <input type="text" class="form-control" id="contextLabel" formControlName="contextLabel" placeholder="Context Label" autofocus>
-    <small [hidden]="myForm.controls.contextLabel.valid || (myForm.controls.contextLabel.pristine && !submitted)" class="text-danger">
-      Context Label is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="contextLabel">Context Label</label>
+        <input type="text" class="form-control" id="contextLabel" formControlName="contextLabel" placeholder="Context Label" autofocus>
+        <small [hidden]="myForm.controls.contextLabel.valid || (myForm.controls.contextLabel.pristine && !submitted)" class="text-danger">
+          Context Label is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="ltiMessageType">Lti Message Type</label>
+        <input type="text" class="form-control" id="ltiMessageType" formControlName="ltiMessageType" placeholder="Lti Message Type" autofocus>
+        <small [hidden]="myForm.controls.ltiMessageType.valid || (myForm.controls.ltiMessageType.pristine && !submitted)" class="text-danger">
+          Lti Message Type is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="ltiVersion">Lti Version</label>
+        <input type="text" class="form-control" id="ltiVersion" formControlName="ltiVersion" placeholder="Lti Version" autofocus>
+        <small [hidden]="myForm.controls.ltiVersion.valid || (myForm.controls.ltiVersion.pristine && !submitted)" class="text-danger">
+          Lti Version is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="ltiMessageType">Lti Message Type</label>
-    <input type="text" class="form-control" id="ltiMessageType" formControlName="ltiMessageType" placeholder="Lti Message Type" autofocus>
-    <small [hidden]="myForm.controls.ltiMessageType.valid || (myForm.controls.ltiMessageType.pristine && !submitted)" class="text-danger">
-      Lti Message Type is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="ltiVersion">User Id</label>
+        <input type="number" class="form-control" id="userId" formControlName="userId" placeholder="User Id" autofocus>
+        <small [hidden]="myForm.controls.userId.valid || (myForm.controls.userId.pristine && !submitted)" class="text-danger">
+          User Id is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="roles">Roles</label>
+        <input type="text" class="form-control" id="roles" formControlName="roles" placeholder="Roles" autofocus>
+        <small [hidden]="myForm.controls.roles.valid || (myForm.controls.roles.pristine && !submitted)" class="text-danger">
+          Roles is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="lisPersonNameFull">Lti Person Name Full</label>
+        <input type="text" class="form-control" id="lisPersonNameFull" formControlName="lisPersonNameFull" placeholder="Lti Person Name Full" autofocus>
+        <small [hidden]="myForm.controls.lisPersonNameFull.valid || (myForm.controls.lisPersonNameFull.pristine && !submitted)" class="text-danger">
+          Lti Person Name Full is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="ltiVersion">Lti Version</label>
-    <input type="text" class="form-control" id="ltiVersion" formControlName="ltiVersion" placeholder="Lti Version" autofocus>
-    <small [hidden]="myForm.controls.ltiVersion.valid || (myForm.controls.ltiVersion.pristine && !submitted)" class="text-danger">
-      Lti Version is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="lisPersonNameGiven">Lti Person Name Given</label>
+        <input type="text" class="form-control" id="lisPersonNameGiven" formControlName="lisPersonNameGiven" placeholder="Lti Person Name Given" autofocus>
+        <small [hidden]="myForm.controls.lisPersonNameGiven.valid || (myForm.controls.lisPersonNameGiven.pristine && !submitted)" class="text-danger">
+          Lti Person Name Given is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="lisPersonNameFamily">Lti Person Name Family</label>
+        <input type="text" class="form-control" id="lisPersonNameFamily" formControlName="lisPersonNameGiven" placeholder="Lti Person Name Family" autofocus>
+        <small [hidden]="myForm.controls.lisPersonNameFamily.valid || (myForm.controls.lisPersonNameFamily.pristine && !submitted)" class="text-danger">
+          Lti Person Name Family is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="lisPersonContactEmailPrimary">Lti Person Contact Email Primary</label>
+        <input type="text" class="form-control" id="lisPersonContactEmailPrimary" formControlName="lisPersonContactEmailPrimary" placeholder="Lti Person Contact Email Primary" autofocus>
+        <small [hidden]="myForm.controls.lisPersonContactEmailPrimary.valid || (myForm.controls.lisPersonContactEmailPrimary.pristine && !submitted)" class="text-danger">
+          Lti Person Contact Email Primary is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="ltiVersion">User Id</label>
-    <input type="number" class="form-control" id="userId" formControlName="userId" placeholder="User Id" autofocus>
-    <small [hidden]="myForm.controls.userId.valid || (myForm.controls.userId.pristine && !submitted)" class="text-danger">
-      User Id is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="launchPresentationLocale">Launch Presentation Locale</label>
+        <input type="text" class="form-control" id="launchPresentationLocale" formControlName="launchPresentationLocale" placeholder="Launch Presentation Locale" autofocus>
+        <small [hidden]="myForm.controls.launchPresentationLocale.valid || (myForm.controls.launchPresentationLocale.pristine && !submitted)" class="text-danger">
+          Launch Presentation Locale is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="customAppsesid">Appses Id</label>
+        <input type="text" class="form-control" id="customAppsesid" formControlName="customAppsesid" placeholder="Appses Id" autofocus>
+        <small [hidden]="myForm.controls.customAppsesid.valid || (myForm.controls.customAppsesid.pristine && !submitted)" class="text-danger">
+          Appses Id is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="resourceLinkId">Resource Link Id</label>
+        <input type="number" class="form-control" id="resourceLinkId" formControlName="resourceLinkId" placeholder="Resource Link Id" autofocus>
+        <small [hidden]="myForm.controls.resourceLinkId.valid || (myForm.controls.resourceLinkId.pristine && !submitted)" class="text-danger">
+          Resource Link Id is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="roles">Roles</label>
-    <input type="text" class="form-control" id="roles" formControlName="roles" placeholder="Roles" autofocus>
-    <small [hidden]="myForm.controls.roles.valid || (myForm.controls.roles.pristine && !submitted)" class="text-danger">
-      Roles is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="lisOutcomeServiceUrl">Lis Outcome Service Url</label>
+        <input type="text" class="form-control" id="lisOutcomeServiceUrl" formControlName="lisOutcomeServiceUrl" placeholder="Lis Outcome Service Url" autofocus>
+        <small [hidden]="myForm.controls.lisOutcomeServiceUrl.valid || (myForm.controls.lisOutcomeServiceUrl.pristine && !submitted)" class="text-danger">
+          Lis Outcome Service Url is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="oauthVersion">Oauth Version</label>
+        <input type="text" class="form-control" id="oauthVersion" formControlName="oauthVersion" placeholder="Oauth Version" autofocus>
+        <small [hidden]="myForm.controls.oauthVersion.valid || (myForm.controls.oauthVersion.pristine && !submitted)" class="text-danger">
+          Oauth Version is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="oauthNonce">Oauth Nonce</label>
+        <input type="text" class="form-control" id="oauthNonce" formControlName="oauthNonce" placeholder="Oauth Nonce" autofocus>
+        <small [hidden]="myForm.controls.oauthNonce.valid || (myForm.controls.oauthNonce.pristine && !submitted)" class="text-danger">
+          Oauth Nonce is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lisPersonNameFull">Lti Person Name Full</label>
-    <input type="text" class="form-control" id="lisPersonNameFull" formControlName="lisPersonNameFull" placeholder="Lti Person Name Full" autofocus>
-    <small [hidden]="myForm.controls.lisPersonNameFull.valid || (myForm.controls.lisPersonNameFull.pristine && !submitted)" class="text-danger">
-      Lti Person Name Full is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="oauthTimestamp">Oauth Timestamp</label>
+        <input type="number" class="form-control" id="oauthTimestamp" formControlName="oauthTimestamp" placeholder="Oauth Timestamp" autofocus>
+        <small [hidden]="myForm.controls.oauthTimestamp.valid || (myForm.controls.oauthTimestamp.pristine && !submitted)" class="text-danger">
+          Oauth Timestamp is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="oauthConsumerKey">Oauth Consumer Key</label>
+        <input type="text" class="form-control" id="oauthConsumerKey" formControlName="oauthConsumerKey" placeholder="Oauth Consumer Key" autofocus>
+        <small [hidden]="myForm.controls.oauthConsumerKey.valid || (myForm.controls.oauthConsumerKey.pristine && !submitted)" class="text-danger">
+          Oauth Consumer Key is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="oauthSignatureMethod">Oauth Signature Method</label>
+        <input type="text" class="form-control" id="oauthSignatureMethod" formControlName="oauthSignatureMethod" placeholder="Oauth Signature Method" autofocus>
+        <small [hidden]="myForm.controls.oauthSignatureMethod.valid || (myForm.controls.oauthSignatureMethod.pristine && !submitted)" class="text-danger">
+          Oauth Signature Method is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lisPersonNameGiven">Lti Person Name Given</label>
-    <input type="text" class="form-control" id="lisPersonNameGiven" formControlName="lisPersonNameGiven" placeholder="Lti Person Name Given" autofocus>
-    <small [hidden]="myForm.controls.lisPersonNameGiven.valid || (myForm.controls.lisPersonNameGiven.pristine && !submitted)" class="text-danger">
-      Lti Person Name Given is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="oauthSignature">Oauth Signature</label>
+        <input type="text" class="form-control" id="oauthSignature" formControlName="oauthSignature" placeholder="Oauth Signature" autofocus>
+        <small [hidden]="myForm.controls.oauthSignature.valid || (myForm.controls.oauthSignature.pristine && !submitted)" class="text-danger">
+          Oauth Signature is required
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="oauthCallback">Oauth Callback</label>
+        <input type="text" class="form-control" id="oauthCallback" formControlName="oauthCallback" placeholder="Oauth Callback" autofocus>
+        <small [hidden]="myForm.controls.oauthCallback.valid || (myForm.controls.oauthCallback.pristine && !submitted)" class="text-danger">
+          Oauth Callback is required
+        </small>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lisPersonNameFamily">Lti Person Name Family</label>
-    <input type="text" class="form-control" id="lisPersonNameFamily" formControlName="lisPersonNameGiven" placeholder="Lti Person Name Family" autofocus>
-    <small [hidden]="myForm.controls.lisPersonNameFamily.valid || (myForm.controls.lisPersonNameFamily.pristine && !submitted)" class="text-danger">
-      Lti Person Name Family is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-3">
+      Or
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lisPersonContactEmailPrimary">Lti Person Contact Email Primary</label>
-    <input type="text" class="form-control" id="lisPersonContactEmailPrimary" formControlName="lisPersonContactEmailPrimary" placeholder="Lti Person Contact Email Primary" autofocus>
-    <small [hidden]="myForm.controls.lisPersonContactEmailPrimary.valid || (myForm.controls.lisPersonContactEmailPrimary.pristine && !submitted)" class="text-danger">
-      Lti Person Contact Email Primary is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="payLoadFile">Load payload Json File</label>
+        <input type="file" class="form-control" accept=".json" id="payLoadFile" multiple (change)="openFile($event)" placeholder="Load payload Json File">
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="launchPresentationLocale">Launch Presentation Locale</label>
-    <input type="text" class="form-control" id="launchPresentationLocale" formControlName="launchPresentationLocale" placeholder="Launch Presentation Locale" autofocus>
-    <small [hidden]="myForm.controls.launchPresentationLocale.valid || (myForm.controls.launchPresentationLocale.pristine && !submitted)" class="text-danger">
-      Launch Presentation Locale is required
-    </small>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="customAppsesid">Appses Id</label>
-    <input type="text" class="form-control" id="customAppsesid" formControlName="customAppsesid" placeholder="Appses Id" autofocus>
-    <small [hidden]="myForm.controls.customAppsesid.valid || (myForm.controls.customAppsesid.pristine && !submitted)" class="text-danger">
-      Appses Id is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="resourceLinkId">Resource Link Id</label>
-    <input type="number" class="form-control" id="resourceLinkId" formControlName="resourceLinkId" placeholder="Resource Link Id" autofocus>
-    <small [hidden]="myForm.controls.resourceLinkId.valid || (myForm.controls.resourceLinkId.pristine && !submitted)" class="text-danger">
-      Resource Link Id is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="lisOutcomeServiceUrl">Lis Outcome Service Url</label>
-    <input type="text" class="form-control" id="lisOutcomeServiceUrl" formControlName="lisOutcomeServiceUrl" placeholder="Lis Outcome Service Url" autofocus>
-    <small [hidden]="myForm.controls.lisOutcomeServiceUrl.valid || (myForm.controls.lisOutcomeServiceUrl.pristine && !submitted)" class="text-danger">
-      Lis Outcome Service Url is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="oauthVersion">Oauth Version</label>
-    <input type="text" class="form-control" id="oauthVersion" formControlName="oauthVersion" placeholder="Oauth Version" autofocus>
-    <small [hidden]="myForm.controls.oauthVersion.valid || (myForm.controls.oauthVersion.pristine && !submitted)" class="text-danger">
-      Oauth Version is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="oauthNonce">Oauth Nonce</label>
-    <input type="text" class="form-control" id="oauthNonce" formControlName="oauthNonce" placeholder="Oauth Nonce" autofocus>
-    <small [hidden]="myForm.controls.oauthNonce.valid || (myForm.controls.oauthNonce.pristine && !submitted)" class="text-danger">
-      Oauth Nonce is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="oauthTimestamp">Oauth Timestamp</label>
-    <input type="number" class="form-control" id="oauthTimestamp" formControlName="oauthTimestamp" placeholder="Oauth Timestamp" autofocus>
-    <small [hidden]="myForm.controls.oauthTimestamp.valid || (myForm.controls.oauthTimestamp.pristine && !submitted)" class="text-danger">
-      Oauth Timestamp is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="oauthConsumerKey">Oauth Consumer Key</label>
-    <input type="text" class="form-control" id="oauthConsumerKey" formControlName="oauthConsumerKey" placeholder="Oauth Consumer Key" autofocus>
-    <small [hidden]="myForm.controls.oauthConsumerKey.valid || (myForm.controls.oauthConsumerKey.pristine && !submitted)" class="text-danger">
-      Oauth Consumer Key is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="oauthSignatureMethod">Oauth Signature Method</label>
-    <input type="text" class="form-control" id="oauthSignatureMethod" formControlName="oauthSignatureMethod" placeholder="Oauth Signature Method" autofocus>
-    <small [hidden]="myForm.controls.oauthSignatureMethod.valid || (myForm.controls.oauthSignatureMethod.pristine && !submitted)" class="text-danger">
-      Oauth Signature Method is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="oauthSignature">Oauth Signature</label>
-    <input type="text" class="form-control" id="oauthSignature" formControlName="oauthSignature" placeholder="Oauth Signature" autofocus>
-    <small [hidden]="myForm.controls.oauthSignature.valid || (myForm.controls.oauthSignature.pristine && !submitted)" class="text-danger">
-      Oauth Signature is required
-    </small>
-  </div>
-  <div class="form-group">
-    <label for="oauthCallback">Oauth Callback</label>
-    <input type="text" class="form-control" id="oauthCallback" formControlName="oauthCallback" placeholder="Oauth Callback" autofocus>
-    <small [hidden]="myForm.controls.oauthCallback.valid || (myForm.controls.oauthCallback.pristine && !submitted)" class="text-danger">
-      Oauth Callback is required
-    </small>
-  </div>
-  <div class="form-group">
-    <input type="file" accept=".json" multiple (change)="openFile($event)">
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form>
