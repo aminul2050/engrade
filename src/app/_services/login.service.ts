@@ -17,6 +17,6 @@ export class LoginService {
   logout(): void {
     // clear token remove user from local storage to log user out
     this.token = null;
-    sessionStorage.removeItem('auth');
+    sessionStorage.removeItem('authUser');
   }
 }

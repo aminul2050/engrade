@@ -64,20 +64,25 @@ export class LoginComponent implements OnInit {
   }
   save(model: EngradePayload, isValid: boolean) {
     this.submitted = true;
-    const data = this.makeJson(model);
-    if ( data ) {
+    const modelData = this.makeJson(model);
+    if ( modelData ) {
       this.http
-        .post(this.api.getUrl('/login'), data, this.api.getHeader(''))
+        .post(this.api.getUrl('/login'), modelData, this.api.getHeader(''))
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
-              sessionStorage.setItem('auth', JSON.stringify(data['resourceSet']['resources'][0]));
+              sessionStorage.setItem('authUser', JSON.stringify(data['resourceSet']['resources'][0]));
               this.parentRouter.navigate(['/home']);
-              console.log(data['resourceSet']['resources'][0]['token']);
             }
           },
           err => {
-            this.alertService.error('Some thing Error');
+            if (err.error instanceof Error) {
+              // A client-side or network error occurred. Handle it accordingly.
+              console.log('An error occurred:', err.error.message);
+              this.alertService.error('An error occurred:', err.error.message);
+            } else {
+              this.alertService.error(err.error.message);
+            }
           }
         );
     }

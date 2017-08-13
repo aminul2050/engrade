@@ -14,7 +14,7 @@ export class TaskService {
   public pagedData;
   public taskList;
   private url;
-  private token = JSON.parse(sessionStorage.getItem('auth'))['token'] || '';
+  private token = JSON.parse(sessionStorage.getItem('authUser'))['token'] || '';
 
   constructor(private http: HttpClient,
               private api: ApiService,

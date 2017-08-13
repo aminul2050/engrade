@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = 'Engrade';
-    const auth = JSON.parse(sessionStorage.getItem('auth'));
+    const auth = JSON.parse(sessionStorage.getItem('authUser'));
     if ( auth ) {
         this.authLoggedIn = true;
     }

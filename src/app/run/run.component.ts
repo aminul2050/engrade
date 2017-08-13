@@ -9,7 +9,7 @@ import {RequestOptions, Response} from '@angular/http';
 })
 export class RunComponent {
   public message;
-  private token = JSON.parse(sessionStorage.getItem('auth'))['token'] || '';
+  private token = JSON.parse(sessionStorage.getItem('authUser'))['token'] || '';
 
   constructor(private http: HttpClient,
               private api: ApiService,
@@ -27,11 +27,17 @@ export class RunComponent {
         .subscribe(
           data => {
             if ( data['statusCode'] === 200 ) {
-              this.alertService.success('Successfully Run');
+              this.alertService.success(data['message']);
             }
           },
           err => {
-            this.alertService.error('Something went wrong!');
+            if (err.error instanceof Error) {
+              // A client-side or network error occurred. Handle it accordingly.
+              console.log('An error occurred:', err.error.message);
+              this.alertService.error('An error occurred:', err.error.message);
+            } else {
+              this.alertService.error(err.error.message);
+            }
           }
         );
     } else {
