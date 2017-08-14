@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
             } else {
               this.alertService.error(err.error.message);
             }
+            window.scrollTo(0, 0);
           }
         );
     }

@@ -41,7 +41,7 @@ export class RunComponent {
           }
         );
     } else {
-      console.log('Session time out. Please login again');
+      this.alertService.error('Session time out. Please login again');
     }
   }
 }
