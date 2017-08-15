@@ -4,6 +4,7 @@ import { EngradePayload } from '../_model/engradePayload';
 import { HttpClient } from '@angular/common/http';
 import { ApiService, LoginService, AlertService } from '../_services/index';
 import { Router } from '@angular/router';
+import {CommonService} from '../_helpers/common';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
               private api: ApiService,
               private alertService: AlertService,
               private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private commonService: CommonService) {
     this.parentRouter = router;
   }
 
@@ -77,7 +79,8 @@ export class LoginComponent implements OnInit {
             this.parentRouter.navigate(['/home']);
           },
           error => {
-            this.alertService.error(error);
+            this.alertService.error(JSON.parse(error).message);
+            this.commonService.goToTop();
             this.loading = false;
           });
     }
