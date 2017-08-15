@@ -1,14 +1,14 @@
 export class EngradePayload {
-  customSchoolId: number;
+  customSchoolId: string;
   customSchoolName: string;
-  customDistrictId: number;
+  customDistrictId: string;
   customDistrictName: string;
-  contextId: number;
+  contextId: string;
   contextTitle: string;
   contextLabel: string;
   ltiMessageType: string;
   ltiVersion: string;
-  userId: number;
+  userId: string;
   roles: string;
   lisPersonNameFull: string;
   lisPersonNameGiven: string;
@@ -16,24 +16,24 @@ export class EngradePayload {
   lisPersonContactEmailPrimary: string;
   launchPresentationLocale: string;
   customAppsesid: string;
-  resourceLinkId: number;
+  resourceLinkId: string;
   lisOutcomeServiceUrl: string;
   oauthVersion: string;
   oauthNonce: string;
-  oauthTimestamp: number;
+  oauthTimestamp: string;
   oauthConsumerKey: string;
   oauthSignatureMethod: string;
   oauthCallback: string;
   oauthSignature: string;
-  constructor(customSchoolId: number, customSchoolName: string,
-              customDistrictId: number, customDistrictName: string,
-              contextId: number, contextTitle: string, contextLabel: string,
-              ltiMessageType: string, ltiVersion: string, userId: number,
+  constructor(customSchoolId: string, customSchoolName: string,
+              customDistrictId: string, customDistrictName: string,
+              contextId: string, contextTitle: string, contextLabel: string,
+              ltiMessageType: string, ltiVersion: string, userId: string,
               roles: string, lisPersonNameFull: string, lisPersonNameGiven: string,
               lisPersonNameFamily: string, lisPersonContactEmailPrimary: string,
-              launchPresentationLocale: string, customAppsesid: string, resourceLinkId: number,
+              launchPresentationLocale: string, customAppsesid: string, resourceLinkId: string,
               lisOutcomeServiceUrl: string, oauthVersion: string, oauthNonce: string,
-              oauthTimestamp: number, oauthConsumerKey: string, oauthSignatureMethod: string,
+              oauthTimestamp: string, oauthConsumerKey: string, oauthSignatureMethod: string,
               oauthCallback: string, oauthSignature: string) {
   this.customSchoolId = customSchoolId;
   this.customSchoolName = customSchoolName;
