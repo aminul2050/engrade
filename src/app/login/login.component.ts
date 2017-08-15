@@ -74,11 +74,9 @@ export class LoginComponent implements OnInit {
       this.loginService.login(model)
         .subscribe(
           data => {
-            alert(JSON.stringify(data));
-            this.router.navigate([this.returnUrl]);
+            this.parentRouter.navigate(['/home']);
           },
           error => {
-            alert(JSON.stringify(error));
             this.alertService.error(error);
             this.loading = false;
           });

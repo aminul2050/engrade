@@ -11,9 +11,9 @@ export class LoginService {
     const modelData = this.makeJson(model);
     return this.http.post('/login', modelData)
       .map((response: Response) => {
-        let user = response.json();
+        let user = response.json()['resourceSet']['resources'][0];
         if (user && user.token) {
-          localStorage.setItem('authUser', JSON.stringify(user));
+          sessionStorage.setItem('authUser', JSON.stringify(user));
         }
         return user;
       });
