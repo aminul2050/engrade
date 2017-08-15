@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+import { customHttpProvider } from './_helpers/custom-http';
 import { AuthGuard } from './_guards/index';
 import { AlertService, ApiService, LoginService } from './_services/index';
 
@@ -56,6 +57,7 @@ import {TaskService} from './_services/task.service';
     ])
   ],
   providers: [
+    customHttpProvider,
     AuthGuard,
     AlertService,
     ApiService,

@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  model: any = {};
+  loading = false;
+  returnUrl: string;
   public myForm: FormGroup;
   public submitted: boolean;
   private parentRouter;
@@ -63,29 +66,22 @@ export class LoginComponent implements OnInit {
     const myFormValueChanges$ = this.myForm.valueChanges;
   }
   save(model: EngradePayload, isValid: boolean) {
+    this.loading = true;
     this.submitted = true;
     const modelData = this.makeJson(model);
     if ( modelData ) {
-      this.http
-        .post(this.api.getUrl('/login'), modelData, this.api.getHeader(''))
+      this.loading = true;
+      this.loginService.login(model)
         .subscribe(
           data => {
-            if ( data['statusCode'] === 200 ) {
-              sessionStorage.setItem('authUser', JSON.stringify(data['resourceSet']['resources'][0]));
-              this.parentRouter.navigate(['/home']);
-            }
+            alert(JSON.stringify(data));
+            this.router.navigate([this.returnUrl]);
           },
-          err => {
-            if (err.error instanceof Error) {
-              // A client-side or network error occurred. Handle it accordingly.
-              console.log('An error occurred:', err.error.message);
-              this.alertService.error('An error occurred:', err.error.message);
-            } else {
-              this.alertService.error(err.error.message);
-            }
-            window.scrollTo(0, 0);
-          }
-        );
+          error => {
+            alert(JSON.stringify(error));
+            this.alertService.error(error);
+            this.loading = false;
+          });
     }
   }
   openFile(event) {
