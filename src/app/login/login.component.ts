@@ -66,22 +66,28 @@ export class LoginComponent implements OnInit {
     const myFormValueChanges$ = this.myForm.valueChanges;
   }
   save(model: EngradePayload, isValid: boolean) {
-    this.loading = true;
     this.submitted = true;
     const modelData = this.makeJson(model);
     if ( modelData ) {
-      this.loading = true;
-      this.loginService.login(model)
+      this.http
+        .post(this.api.getUrl('/login'), modelData, this.api.getHeader(''))
         .subscribe(
           data => {
-            alert(JSON.stringify(data));
-            this.router.navigate([this.returnUrl]);
+            if ( data['statusCode'] === 200 ) {
+              sessionStorage.setItem('authUser', JSON.stringify(data['resourceSet']['resources'][0]));
+              this.parentRouter.navigate(['/home']);
+            }
           },
-          error => {
-            alert(JSON.stringify(error));
-            this.alertService.error(error);
-            this.loading = false;
-          });
+          err => {
+            if (err.error instanceof Error) {
+              // A client-side or network error occurred. Handle it accordingly.
+              console.log('An error occurred:', err.error.message);
+              this.alertService.error('An error occurred:', err.error.message);
+            } else {
+              this.alertService.error(err.error.message);
+            }
+          }
+        );
     }
   }
   openFile(event) {
