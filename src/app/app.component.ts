@@ -1,4 +1,6 @@
 import { Component, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {CommonService} from './_helpers/common';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +9,17 @@ import { Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   public title: string;
-  public authLoggedIn = false;
+  public user: string;
+  private  subscription: Subscription;
+
+  constructor(private commonService: CommonService) {
+    this.subscription = this.commonService.getAuthenticated().subscribe(user => { this.user = user; });
+    if ( !this.user && sessionStorage.getItem('authUser') ) {
+      this.user = JSON.parse(sessionStorage.getItem('authUser'))['username'];
+    }
+  }
 
   ngOnInit(): void {
     this.title = 'Engrade';
-    const auth = JSON.parse(sessionStorage.getItem('authUser'));
-    if ( auth ) {
-        this.authLoggedIn = true;
-    }
   }
 }

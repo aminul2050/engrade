@@ -4,6 +4,10 @@ import { DatePipe } from '@angular/common';
 import {Page} from '../_model/page';
 import {Task} from '../_model/task';
 import {ViewEncapsulation} from '@angular/core';
+import {AlertService} from '../_services/alert.service';
+import {CommonService} from '../_helpers/common';
+import {Router} from '@angular/router';
+import {ScriptRunService} from '../_services/script-run.service';
 
 
 @Component({
@@ -22,7 +26,11 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService,
+              private alertService: AlertService,
+              private commonService: CommonService,
+              private parentRouter: Router,
+              private scriptRunService: ScriptRunService) {
     this.page = new Page();
     this.rows = new Array<Task>();
     this.columns = [
@@ -44,10 +52,19 @@ export class HomeComponent implements OnInit {
    */
   setPage(pageInfo) {
     this.page.pageNumber = pageInfo.offset;
-    this.taskService.getResults(this.page).subscribe(pagedData => {
-      this.page = pagedData.page;
-      this.rows = pagedData.data;
-    });
+    this.taskService.getResults(this.page)
+      .subscribe(
+        pagedData => {
+          this.page = pagedData.page;
+          this.rows = pagedData.data;
+        },
+        error => {
+          this.parentRouter.navigate(['/login']);
+          this.alertService.error(error.error.message);
+          this.commonService.goToTop();
+          this.loading = false;
+        }
+      );
   }
 
   onSort(event) {
@@ -60,18 +77,38 @@ export class HomeComponent implements OnInit {
       this.column = event.sorts[0]['prop'];
     }
     this.page.sorting = this.column + ',' + sort;
-    this.taskService.getResults(this.page).subscribe(pagedData => {
-      this.page = pagedData.page;
-      this.rows = pagedData.data;
-    });
+    this.taskService.getResults(this.page).subscribe(
+      pagedData => {
+        this.page = pagedData.page;
+        this.rows = pagedData.data;
+      },
+      error => {
+        this.commonService.sessionCheck(error);
+        this.alertService.error(error.error.message);
+        this.commonService.goToTop();
+        this.loading = false;
+      }
+    );
   }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     this.page.filter = val;
-    this.taskService.getResults(this.page).subscribe(pagedData => {
-      this.page = pagedData.page;
-      this.rows = pagedData.data;
-    });
+    this.taskService.getResults(this.page).subscribe(
+      pagedData => {
+        this.page = pagedData.page;
+        this.rows = pagedData.data;
+      },
+      error => {
+        this.parentRouter.navigate(['/login']);
+        this.alertService.error(error.error.message);
+        this.commonService.goToTop();
+        this.loading = false;
+      }
+    );
+  }
+
+  runTask(event) {
+    this.scriptRunService.runScript();
   }
 }

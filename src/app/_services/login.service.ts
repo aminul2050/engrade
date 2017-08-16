@@ -3,23 +3,29 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {EngradePayload} from '../_model/engradePayload';
+import {CommonService} from '../_helpers/common';
 
 @Injectable()
 export class LoginService {
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+              private commonService: CommonService) { }
+
+
   login(model: EngradePayload) {
     const modelData = this.makeJson(model);
     return this.http.post('/login', modelData)
       .map((response: Response) => {
-        let user = response.json();
+        let user = response.json()['resourceSet']['resources'][0];
         if (user && user.token) {
-          localStorage.setItem('authUser', JSON.stringify(user));
+          this.commonService.setAuthenticated(user.username);
+          sessionStorage.setItem('authUser', JSON.stringify(user));
         }
         return user;
       });
   }
 
   logout() {
+    this.commonService.clearAuthenticated();
     sessionStorage.removeItem('authUser');
   }
 

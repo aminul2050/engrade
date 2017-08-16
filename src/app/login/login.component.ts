@@ -4,6 +4,7 @@ import { EngradePayload } from '../_model/engradePayload';
 import { HttpClient } from '@angular/common/http';
 import { ApiService, LoginService, AlertService } from '../_services/index';
 import { Router } from '@angular/router';
+import {CommonService} from '../_helpers/common';
 
 
 @Component({
@@ -25,12 +26,13 @@ export class LoginComponent implements OnInit {
               private api: ApiService,
               private alertService: AlertService,
               private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private commonService: CommonService) {
     this.parentRouter = router;
+    this.loginService.logout();
   }
 
   ngOnInit() {
-    this.loginService.logout();
     this.myForm = this._fb.group({
       customSchoolId: ['10000000000793519', <any>Validators.required],
       customSchoolName: ['Back Creek Valley Elementary', <any>Validators.required],
@@ -66,28 +68,22 @@ export class LoginComponent implements OnInit {
     const myFormValueChanges$ = this.myForm.valueChanges;
   }
   save(model: EngradePayload, isValid: boolean) {
+    this.loading = true;
     this.submitted = true;
     const modelData = this.makeJson(model);
     if ( modelData ) {
-      this.http
-        .post(this.api.getUrl('/login'), modelData, this.api.getHeader(''))
+      this.loading = true;
+      this.loginService.login(model)
         .subscribe(
           data => {
-            if ( data['statusCode'] === 200 ) {
-              sessionStorage.setItem('authUser', JSON.stringify(data['resourceSet']['resources'][0]));
               this.parentRouter.navigate(['/home']);
+            },
+          error => {
+              this.alertService.error(JSON.parse(error).message);
+              this.commonService.goToTop();
+              this.loading = false;
             }
-          },
-          err => {
-            if (err.error instanceof Error) {
-              // A client-side or network error occurred. Handle it accordingly.
-              console.log('An error occurred:', err.error.message);
-              this.alertService.error('An error occurred:', err.error.message);
-            } else {
-              this.alertService.error(err.error.message);
-            }
-          }
-        );
+          );
     }
   }
   openFile(event) {
