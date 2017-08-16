@@ -5,20 +5,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">{{title}}</a>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div  *ngIf="user" class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/login">Login/Logout <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/run">Run</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Logout</a>
+        </li>
       </ul>
       <span class="navbar-text" style="color: #e3f2fd;">
-        Admin
+        {{user}}
       </span>
     </div>
   </div>

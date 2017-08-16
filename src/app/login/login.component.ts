@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
               private loginService: LoginService,
               private commonService: CommonService) {
     this.parentRouter = router;
+    this.loginService.logout();
   }
 
   ngOnInit() {
-    this.loginService.logout();
     this.myForm = this._fb.group({
       customSchoolId: ['10000000000793519', <any>Validators.required],
       customSchoolName: ['Back Creek Valley Elementary', <any>Validators.required],
