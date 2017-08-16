@@ -50,16 +50,19 @@ export class HomeComponent implements OnInit {
    */
   setPage(pageInfo) {
     this.page.pageNumber = pageInfo.offset;
-    this.taskService.getResults(this.page).subscribe(pagedData => {
-      this.page = pagedData.page;
-      this.rows = pagedData.data;
-    },
-      error => {
-        this.parentRouter.navigate(['/login']);
-        this.alertService.error(error.error.message);
-        this.commonService.goToTop();
-        this.loading = false;
-      });
+    this.taskService.getResults(this.page)
+      .subscribe(
+        pagedData => {
+          this.page = pagedData.page;
+          this.rows = pagedData.data;
+        },
+        error => {
+          this.parentRouter.navigate(['/login']);
+          this.alertService.error(error.error.message);
+          this.commonService.goToTop();
+          this.loading = false;
+        }
+      );
   }
 
   onSort(event) {
@@ -72,18 +75,34 @@ export class HomeComponent implements OnInit {
       this.column = event.sorts[0]['prop'];
     }
     this.page.sorting = this.column + ',' + sort;
-    this.taskService.getResults(this.page).subscribe(pagedData => {
-      this.page = pagedData.page;
-      this.rows = pagedData.data;
-    });
+    this.taskService.getResults(this.page).subscribe(
+      pagedData => {
+        this.page = pagedData.page;
+        this.rows = pagedData.data;
+      },
+      error => {
+        this.parentRouter.navigate(['/login']);
+        this.alertService.error(error.error.message);
+        this.commonService.goToTop();
+        this.loading = false;
+      }
+    );
   }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     this.page.filter = val;
-    this.taskService.getResults(this.page).subscribe(pagedData => {
-      this.page = pagedData.page;
-      this.rows = pagedData.data;
-    });
+    this.taskService.getResults(this.page).subscribe(
+      pagedData => {
+        this.page = pagedData.page;
+        this.rows = pagedData.data;
+      },
+      error => {
+        this.parentRouter.navigate(['/login']);
+        this.alertService.error(error.error.message);
+        this.commonService.goToTop();
+        this.loading = false;
+      }
+    );
   }
 }
