@@ -39,7 +39,7 @@ import {ScriptRunService} from './_services/script-run.service';
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/home',
         pathMatch: 'full'
       },
       {
