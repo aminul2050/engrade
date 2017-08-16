@@ -14,7 +14,7 @@ export class TaskService {
   public pagedData;
   public taskList;
   private url;
-  private token = JSON.parse(sessionStorage.getItem('authUser'))['token'] || '';
+  private token;
 
   constructor(private http: HttpClient,
               private api: ApiService,
@@ -27,6 +27,7 @@ export class TaskService {
    * @returns {any} An observable containing the employee data
    */
   public getResults(page: Page): Observable<PagedData<Task>> {
+    this.token = JSON.parse(sessionStorage.getItem('authUser'))['token'] || '';
     if ( page.filter ) {
       this.url = this.api.getUrl('/getPage?' + 'page=' + page.pageNumber + '&size=' +
         page.size + '&sort=' + page.sorting + '&filter=' + page.filter);
