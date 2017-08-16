@@ -19,6 +19,7 @@ import { DatePipe } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {TaskService} from './_services/task.service';
 import {CommonService} from './_helpers/common';
+import {ScriptRunService} from './_services/script-run.service';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {CommonService} from './_helpers/common';
   ],
   providers: [
     customHttpProvider,
+    ScriptRunService,
     CommonService,
     AuthGuard,
     AlertService,

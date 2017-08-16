@@ -7,6 +7,7 @@ import {ViewEncapsulation} from '@angular/core';
 import {AlertService} from '../_services/alert.service';
 import {CommonService} from '../_helpers/common';
 import {Router} from '@angular/router';
+import {ScriptRunService} from '../_services/script-run.service';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class HomeComponent implements OnInit {
   constructor(private taskService: TaskService,
               private alertService: AlertService,
               private commonService: CommonService,
-              private parentRouter: Router) {
+              private parentRouter: Router,
+              private scriptRunService: ScriptRunService) {
     this.page = new Page();
     this.rows = new Array<Task>();
     this.columns = [
@@ -81,7 +83,7 @@ export class HomeComponent implements OnInit {
         this.rows = pagedData.data;
       },
       error => {
-        this.parentRouter.navigate(['/login']);
+        this.commonService.sessionCheck(error);
         this.alertService.error(error.error.message);
         this.commonService.goToTop();
         this.loading = false;
@@ -104,5 +106,9 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  runTask(event) {
+    this.scriptRunService.runScript();
   }
 }

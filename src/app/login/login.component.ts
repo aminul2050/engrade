@@ -76,13 +76,14 @@ export class LoginComponent implements OnInit {
       this.loginService.login(model)
         .subscribe(
           data => {
-            this.parentRouter.navigate(['/home']);
-          },
+              this.parentRouter.navigate(['/home']);
+            },
           error => {
-            this.alertService.error(JSON.parse(error).message);
-            this.commonService.goToTop();
-            this.loading = false;
-          });
+              this.alertService.error(JSON.parse(error).message);
+              this.commonService.goToTop();
+              this.loading = false;
+            }
+          );
     }
   }
   openFile(event) {
